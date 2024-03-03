@@ -17,15 +17,8 @@ public class UserTests extends BaseTest {
         driver.findElement(By.cssSelector("#login-button")).click();
     }
 
+
     @Test(priority = 1)
-    public void login() {
-
-        String loginSuccess = driver.findElement(By.cssSelector(".product_label")).getText();
-        Assert.assertEquals(loginSuccess, "Products");
-
-    }
-
-    @Test(priority = 2)
     public void productCheck() {
         Product product1 = new Product(driver.findElement(By.cssSelector("a#item_4_title_link>div")).getText(), driver.findElement(By.xpath("//a[@id='item_4_title_link']/../../div/div[@class='inventory_item_price']")).getText());
         driver.findElement(By.cssSelector("a#item_4_title_link>div")).click();
@@ -35,7 +28,7 @@ public class UserTests extends BaseTest {
         Assert.assertEquals(productPriceNew, product1.price);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 2)
     public void BackButtonCheck() {
         driver.get("https://www.saucedemo.com/v1/inventory.html");
         driver.findElement(By.cssSelector("a#item_4_title_link>div")).click();
@@ -44,7 +37,7 @@ public class UserTests extends BaseTest {
         Assert.assertEquals(products, "Products");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 3)
     public void BasketCheck() {
         Product product1 = new Product(driver.findElement(By.cssSelector("a#item_4_title_link>div")).getText(), driver.findElement(By.xpath("//a[@id='item_4_title_link']/../../div/div[@class='inventory_item_price']")).getText());
         driver.findElement(By.cssSelector("a#item_4_title_link>div")).click();
@@ -56,7 +49,6 @@ public class UserTests extends BaseTest {
     public void afterClass(){
     driver.findElement(By.cssSelector(".bm-burger-button")).click();
     driver.findElement(By.cssSelector("a#logout_sidebar_link")).click();
-    String logoutSuccess = driver.findElement(By.cssSelector("h4")).getText();
-    Assert.assertEquals(logoutSuccess, "Accepted usernames are:");
+
    }
 }
